@@ -91,17 +91,17 @@ export default function Hero() {
         </div>
 
         <div className="relative flex-shrink-0 flex items-center justify-center mt-10 md:mt-0">
-          <div className="absolute w-[260px] h-[260px] md:w-[320px] md:h-[320px] rounded-full bg-gradient-to-br from-orange-500/30 to-yellow-400/20 blur-[40px]" />
+          <div className="absolute w-[300px] h-[300px] md:w-[360px] md:h-[360px] rounded-full bg-gradient-to-br from-orange-500/30 to-yellow-400/20 blur-[40px]" />
           <div
-            className="absolute w-[310px] h-[310px] md:w-[360px] md:h-[360px] rounded-full border border-dashed border-orange-400/40"
+            className="absolute w-[350px] h-[350px] md:w-[410px] md:h-[410px] rounded-full border border-dashed border-orange-400/40"
             style={{ animation: "spinSlow 20s linear infinite" }}
           />
           <div
-            className="absolute w-[285px] h-[285px] md:w-[335px] md:h-[335px] rounded-full border border-dashed border-yellow-400/30"
+            className="absolute w-[325px] h-[325px] md:w-[385px] md:h-[385px] rounded-full border border-dashed border-yellow-400/30"
             style={{ animation: "spinSlow 14s linear infinite reverse" }}
           />
-          <div className="absolute w-[260px] h-[260px] md:w-[305px] md:h-[305px] rounded-full border border-orange-400/20 shadow-[0_0_40px_rgba(251,146,60,0.25)]" />
-          <div className="relative w-[240px] h-[240px] md:w-[290px] md:h-[290px] rounded-full overflow-hidden border-2 border-orange-400/50 shadow-[0_0_50px_rgba(251,146,60,0.4),0_0_80px_rgba(234,179,8,0.15)]">
+          <div className="absolute w-[305px] h-[305px] md:w-[355px] md:h-[355px] rounded-full border border-orange-400/20 shadow-[0_0_40px_rgba(251,146,60,0.25)]" />
+          <div className="relative w-[300px] h-[300px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-2 border-orange-400/50 shadow-[0_0_50px_rgba(251,146,60,0.4),0_0_80px_rgba(234,179,8,0.15)]">
             <Image
               src="/profile_image.png"
               alt="Sajid Hameed"
@@ -112,10 +112,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50" />
-      <button className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-yellow-400 flex items-center justify-center text-black shadow-[0_0_25px_rgba(251,146,60,0.6)] hover:scale-110 transition-all z-50">
-        <MessageCircle className="w-5 h-5" />
-      </button>
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-l from-transparent via-orange-400 to-transparent opacity-50" />
       <style>{`@keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
     </section>
   );

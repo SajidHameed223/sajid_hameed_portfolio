@@ -80,7 +80,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-white text-2xl font-bold">Navigation</h2>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500 to-yellow-400 mt-1 rounded-full" />
+              <div className="w-16 h-0.5 bg-gradient-to-l from-orange-500 to-yellow-400 mt-1 rounded-full" />
             </div>
             <button
               onClick={() => setMenuOpen(false)}
@@ -101,14 +101,14 @@ export default function Navbar() {
                 }}
                 className={`flex items-center gap-4 px-3 py-3 rounded-xl font-semibold text-base transition-all duration-200 w-full ${
                   active === label
-                    ? "bg-gradient-to-r from-orange-500 to-yellow-400 text-white shadow-[0_0_20px_rgba(250,204,21,0.5)]"
+                    ? "bg-gradient-to-l from-orange-500 to-yellow-400 text-white shadow-[0_0_20px_rgba(250,204,21,0.5)]"
                     : "text-gray-300 hover:bg-white/5"
                 }`}
               >
                 <Icon className="w-5 h-5 flex-shrink-0" />
                 <span>{label}</span>
                 {active === label && (
-                  <span className="ml-auto w-2 h-2 bg-white rounded-full" />
+                  <span className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse" />
                 )}
               </button>
             ))}
@@ -122,7 +122,7 @@ export default function Navbar() {
               <span>Hire Me</span>
             </button>
           </div>
-          <div className="w-full h-[4px] bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
+          <div className="w-full h-[4px] bg-gradient-to-l from-transparent via-orange-500 to-transparent" />
         </div>
       )}
     </>

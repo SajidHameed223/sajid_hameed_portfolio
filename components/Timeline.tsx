@@ -54,7 +54,7 @@ export default function TimelineModal() {
       {/* Trigger Button */}
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 text-black font-bold text-sm shadow-[0_0_25px_rgba(251,146,60,0.5)] hover:shadow-[0_0_35px_rgba(251,146,60,0.7)] hover:scale-105 transition-all"
+        className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-l from-orange-400 to-yellow-400 text-black font-bold text-sm shadow-[0_0_25px_rgba(251,146,60,0.5)] hover:shadow-[0_0_35px_rgba(251,146,60,0.7)] hover:scale-105 transition-all"
       >
         <Briefcase className="w-4 h-4" />
         Timeline

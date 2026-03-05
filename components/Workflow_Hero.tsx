@@ -69,7 +69,7 @@ const ProcessCard = ({ step, index }: { step: ProcessStep; index: number }) => {
           </div>
 
           {/* Step Number */}
-          <span className="text-5xl font-bold text-zinc-600 select-none">
+          <span className="text-5xl font-bold text-[#343438] select-none">
             {step.number}
           </span>
         </div>

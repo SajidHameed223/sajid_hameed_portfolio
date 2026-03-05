@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import {
   Home,
   User,
@@ -13,12 +14,11 @@ import {
 } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Home", icon: Home },
-  { label: "About Me", icon: User },
-  { label: "Projects", icon: FolderGit2 },
-  { label: "Services", icon: BadgeCheck },
-  { label: "Posts", icon: NotebookText },
-  { label: "Contact", icon: ContactRound },
+  { label: "Home", icon: Home, href: "/" },
+  { label: "About Me", icon: User, href: "/about" },
+  { label: "Projects", icon: FolderGit2, href: "/projects" },
+  { label: "Services", icon: BadgeCheck, href: "/services" },
+  { label: "Contact", icon: ContactRound, href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -43,18 +43,20 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-3">
           <div className="flex items-center gap-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-3 py-2">
-            {NAV_LINKS.map(({ label }) => (
-              <button
-                key={label}
-                onClick={() => setActive(label)}
-                className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  active === label
-                    ? "bg-gradient-to-l from-orange-500 to-yellow-400 text-white shadow-[0_0_15px_rgba(250,204,21,0.7)]"
-                    : "text-gray-300 hover:text-orange-400 hover:bg-white/10"
-                }`}
-              >
-                {label}
-              </button>
+            {NAV_LINKS.map(({ label, href }) => (
+              <Link key={label} href={href}>
+                <button
+                  key={label}
+                  onClick={() => setActive(label)}
+                  className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    active === label
+                      ? "bg-gradient-to-l from-orange-500 to-yellow-400 text-white shadow-[0_0_15px_rgba(250,204,21,0.7)]"
+                      : "text-gray-300 hover:text-orange-400 hover:bg-white/10"
+                  }`}
+                >
+                  {label}
+                </button>
+              </Link>
             ))}
           </div>
           <button className="relative px-5 py-2 rounded-md bg-gray-300 text-gray-700 font-bold text-sm hover:bg-orange-100 transition-all shadow-lg hover:shadow-[0_0_25px_rgba(250,204,21,0.8)] cursor-pointer">

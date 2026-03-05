@@ -36,3 +36,15 @@ body {
 .animate-marquee {
   animation: marquee 100s linear infinite;
 }
+@keyframes formMarquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-form-marquee {
+  animation: formMarquee 40s linear infinite; /* faster than skills bar */
+}

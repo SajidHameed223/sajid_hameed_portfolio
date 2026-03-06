@@ -170,7 +170,7 @@ export default function ContactMe() {
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Right Side - Contact Info first on small screens */}
+          {/* Right Side - Contact Info first on small screens Card*/}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

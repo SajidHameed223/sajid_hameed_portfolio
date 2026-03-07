@@ -1,15 +1,16 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Globe, 
-  Smartphone, 
-  Trophy, 
-  Users, 
-  Cloud, 
-  Building2, 
-  ArrowRight 
-} from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Globe,
+  Smartphone,
+  Trophy,
+  Users,
+  Cloud,
+  Building2,
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
 
 // --- Types ---
 interface ServiceItem {
@@ -22,46 +23,58 @@ interface ServiceItem {
 // --- Data ---
 const services: ServiceItem[] = [
   {
-    id: '1',
-    title: 'Web Development',
-    description: 'Building scalable and maintainable web application architectures with focus on performance, security, and modularity using best practices.',
+    id: "1",
+    title: "Web Development",
+    description:
+      "Building scalable and maintainable web application architectures with focus on performance, security, and modularity using best practices.",
     icon: Globe,
   },
   {
-    id: '2',
-    title: 'Mobile Development',
-    description: 'Creating responsive, high-performance mobile applications using modern frameworks like React Native and Flutter for seamless user experiences.',
+    id: "2",
+    title: "Mobile Development",
+    description:
+      "Creating responsive, high-performance mobile applications using modern frameworks like React Native and Flutter for seamless user experiences.",
     icon: Smartphone,
   },
   {
-    id: '3',
-    title: 'Competitive Programming',
-    description: 'Solving complex algorithmic problems with optimized data structures and efficient logic to deliver high-performance computing solutions.',
+    id: "3",
+    title: "Competitive Programming",
+    description:
+      "Solving complex algorithmic problems with optimized data structures and efficient logic to deliver high-performance computing solutions.",
     icon: Trophy,
   },
   {
-    id: '4',
-    title: 'Hackathon Participation',
-    description: 'Rapid prototyping and innovative solution building under tight deadlines, collaborating with teams to turn ideas into reality.',
+    id: "4",
+    title: "Hackathon Participation",
+    description:
+      "Rapid prototyping and innovative solution building under tight deadlines, collaborating with teams to turn ideas into reality.",
     icon: Users,
   },
   {
-    id: '5',
-    title: 'SaaS Based Projects',
-    description: 'Designing and deploying multi-tenant cloud software solutions with subscription models, focusing on scalability and user retention.',
+    id: "5",
+    title: "SaaS Based Projects",
+    description:
+      "Designing and deploying multi-tenant cloud software solutions with subscription models, focusing on scalability and user retention.",
     icon: Cloud,
   },
   {
-    id: '6',
-    title: 'ERP Software',
-    description: 'Developing integrated enterprise resource planning systems to streamline business processes, inventory, and human resource management.',
+    id: "6",
+    title: "ERP Software",
+    description:
+      "Developing integrated enterprise resource planning systems to streamline business processes, inventory, and human resource management.",
     icon: Building2,
   },
 ];
 
 // --- Components ---
 
-const ServiceCard = ({ service, index }: { service: ServiceItem; index: number }) => {
+const ServiceCard = ({
+  service,
+  index,
+}: {
+  service: ServiceItem;
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -69,7 +82,7 @@ const ServiceCard = ({ service, index }: { service: ServiceItem; index: number }
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -5 }}
-      className="group relative flex flex-col p-8 bg-[#1C1C22] border border-orange-500/30 hover:shadow-[0_10px_40px_rgba(249,115,22,0.25)] rounded-3xl hover:border-orange-500 transition-all duration-300"
+      className="group relative flex flex-col p-8 bg-card border border-black/5 dark:border-orange-500/30 hover:shadow-[0_10px_40px_rgba(249,115,22,0.25)] rounded-3xl hover:border-orange-500 transition-all duration-300"
     >
       {/* Icon Container */}
       <div className="mb-3 w-14 h-14 flex items-center justify-center rounded-2xl bg-orange-200/10 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300 shadow-lg">
@@ -77,19 +90,12 @@ const ServiceCard = ({ service, index }: { service: ServiceItem; index: number }
       </div>
 
       {/* Content */}
-      <h3 className="text-xl font-bold text-gray-300 mb-2 group-hover:text-orange-400 transition-colors">
+      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-orange-400 transition-colors">
         {service.title}
       </h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+      <p className="text-muted text-sm leading-relaxed mb-3 flex-grow">
         {service.description}
       </p>
-
-      {/* Hover Action */}
-      <div className="flex items-center text-xs font-medium text-gray-400 group-hover:text-orange-500 transition-colors">
-        <span>Learn more</span>
-        <ArrowRight size={14} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-      </div>
-
       {/* Decorative gradient blob on hover */}
       <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </motion.div>
@@ -98,9 +104,8 @@ const ServiceCard = ({ service, index }: { service: ServiceItem; index: number }
 
 export default function ServicesExpertise() {
   return (
-    <div className="min-h-screen bg-[#1C1C22] text-gray-400 font-sans selection:bg-orange-500/30 py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background text-muted px-6 md:px-20 py-10 selection:bg-orange-500/30 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <motion.div
@@ -112,21 +117,31 @@ export default function ServicesExpertise() {
             <span className="text-orange-500 font-mono text-sm tracking-widest uppercase mb-3 block">
               What I Do
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-              Services & <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Expertise</span>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              Services &{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                Expertise
+              </span>
             </h2>
           </motion.div>
 
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="group flex items-center gap-2 text-gray-400 hover:text-orange-400 transition-colors text-sm font-medium"
           >
-            View All Services
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            <Link
+              href="/services"
+              className="group flex items-center gap-2 text-muted hover:text-orange-400 transition-colors text-sm font-medium"
+            >
+              View All Services
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </Link>
+          </motion.div>
         </div>
 
         {/* Services Grid */}
@@ -135,8 +150,8 @@ export default function ServicesExpertise() {
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
-
       </div>
     </div>
   );
 }
+

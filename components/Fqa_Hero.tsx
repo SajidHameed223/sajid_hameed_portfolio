@@ -3,14 +3,16 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-// --- Types ---
+/* ---------------- Types ---------------- */
+
 interface FAQItem {
   id: string;
   question: string;
   answer: string;
 }
 
-// --- Data ---
+/* ---------------- Data ---------------- */
+
 const faqData: FAQItem[] = [
   {
     id: "1",
@@ -38,7 +40,7 @@ const faqData: FAQItem[] = [
   },
 ];
 
-// --- Components ---
+/* ---------------- FAQ Item ---------------- */
 
 const FAQItemCard = ({
   item,
@@ -51,29 +53,27 @@ const FAQItemCard = ({
 }) => {
   return (
     <div
-      className={`border rounded-2xl transition-all duration-300 hover:shadow-[0_10px_40px_rgba(249,115,22,0.25)] ${
-        isOpen
-          ? "border-orange-500/50 bg-[#23232a]"
-          : "border-orange-500/30 bg-[#1C1C22] hover:border-orange-500"
-      }`}
+      className={`border rounded-2xl transition-all duration-300 hover:shadow-[0_10px_40px_rgba(249,115,22,0.25)] ${isOpen
+          ? "border-orange-500/50 bg-card shadow-lg"
+          : "border-black/5 dark:border-orange-500/30 bg-card hover:border-orange-500"
+        }`}
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none"
+        className="w-full flex items-center justify-between cursor-pointer p-3 md:p-4 text-left focus:outline-none"
       >
         <span
-          className={`text-lg md:text-xl font-medium pr-8 transition-colors duration-300 ${
-            isOpen ? "text-orange-400" : "text-gray-200"
-          }`}
+          className={`font-heading text-lg md:text-xl pr-8 transition-colors duration-300 ${isOpen ? "text-orange-400" : "text-foreground"
+            }`}
         >
           {item.question}
         </span>
+
         <div
-          className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-            isOpen
+          className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
               ? "bg-orange-500 text-white rotate-180"
-              : "bg-zinc-800 text-gray-400"
-          }`}
+              : "bg-black/5 dark:bg-zinc-800 text-muted"
+            }`}
         >
           <ChevronDown size={20} />
         </div>
@@ -89,7 +89,7 @@ const FAQItemCard = ({
             className="overflow-hidden"
           >
             <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
-              <p className="text-gray-400 leading-relaxed text-base md:text-lg">
+              <p className="text-muted leading-relaxed text-base md:text-lg">
                 {item.answer}
               </p>
             </div>
@@ -100,6 +100,8 @@ const FAQItemCard = ({
   );
 };
 
+/* ---------------- Main Component ---------------- */
+
 export default function CommonQuestions() {
   const [openId, setOpenId] = useState<string | null>(null);
 
@@ -108,16 +110,18 @@ export default function CommonQuestions() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1C1C22] text-gray-400 font-sans selection:bg-orange-500/30 py-20 px-4">
+    <div className="min-h-screen bg-background text-muted selection:bg-orange-500/30 py-10 px-6 md:px-20 transition-colors duration-300">
       <div className="mx-4">
-        {/* Header Section - Centered */}
+
+        {/* Header */}
+
         <div className="mb-16 text-start">
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-orange-500 font-mono text-sm tracking-widest uppercase mb-4 block"
+            className="font-heading text-orange-500 text-sm tracking-[0.25em] uppercase mb-4 block"
           >
             FAQ
           </motion.span>
@@ -127,9 +131,9 @@ export default function CommonQuestions() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight"
+            className="font-heading text-4xl md:text-5xl font-bold tracking-tight"
           >
-            <span className="text-white">Common</span>{" "}
+            <span className="text-foreground">Common</span>{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
               Questions
             </span>
@@ -137,6 +141,7 @@ export default function CommonQuestions() {
         </div>
 
         {/* FAQ List */}
+
         <div className="flex flex-col gap-4">
           {faqData.map((item, index) => (
             <motion.div
@@ -158,3 +163,4 @@ export default function CommonQuestions() {
     </div>
   );
 }
+

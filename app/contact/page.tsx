@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone,
@@ -11,6 +11,7 @@ import {
   Github,
 } from "lucide-react";
 import Image from "next/image";
+import Loader from "@/components/Loader";
 
 const InputField = ({
   label,
@@ -29,14 +30,14 @@ const InputField = ({
 }) => {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-gray-200 text-sm font-medium">{label}</label>
+      <label className="text-foreground text-sm font-medium">{label}</label>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="w-full px-4 py-3 rounded-xl bg-[#1a1a20] border border-orange-500/10 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all duration-300"
+        className="w-full px-4 py-3 rounded-xl bg-card border border-black/5 dark:border-orange-500/10 text-foreground placeholder-muted focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all duration-300"
       />
     </div>
   );
@@ -57,14 +58,14 @@ const TextAreaField = ({
 }) => {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-gray-200 text-sm font-medium">{label}</label>
+      <label className="text-foreground text-sm font-medium">{label}</label>
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
         rows={5}
-        className="w-full px-4 py-3 rounded-xl bg-[#1a1a20] border border-orange-500/10 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all duration-300 resize-none"
+        className="w-full px-4 py-3 rounded-xl bg-card border border-black/5 dark:border-orange-500/10 text-foreground placeholder-muted focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all duration-300 resize-none"
       />
     </div>
   );
@@ -82,13 +83,13 @@ const ContactCard = ({
   href?: string;
 }) => {
   const content = (
-    <div className="group flex items-start gap-4 p-5 rounded-2xl bg-[#23232a]/50 border border-orange-500/10 hover:border-orange-500/30 transition-all duration-300">
+    <div className="group flex items-start gap-4 p-5 rounded-2xl bg-card/50 border border-black/5 dark:border-orange-500/10 hover:border-orange-500/30 transition-all duration-300">
       <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
         <Icon size={24} />
       </div>
       <div>
-        <h4 className="text-gray-200 font-semibold mb-1">{title}</h4>
-        <p className="text-gray-400 text-sm">{value}</p>
+        <h4 className="text-foreground font-semibold mb-1">{title}</h4>
+        <p className="text-muted text-sm">{value}</p>
       </div>
     </div>
   );
@@ -134,7 +135,11 @@ export default function ContactMe() {
     phone: "",
     message: "",
   });
-
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000); // show loader for 1s
+    return () => clearTimeout(timer);
+  }, []);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -149,9 +154,11 @@ export default function ContactMe() {
       message: "",
     });
   };
-
+  if (loading) {
+    return <Loader />
+  }
   return (
-    <div className="min-h-screen bg-[#1C1C22] text-gray-400 font-sans selection:bg-orange-500/30 py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background text-muted font-sans selection:bg-orange-500/30 py-20 px-6 md:px-20 mt-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-col">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -161,11 +168,20 @@ export default function ContactMe() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
+            <span className="text-foreground">Let's</span>{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-              Let's
-            </span>{" "}
-            <span className="text-gray-200">Connect</span>
+              Connect
+            </span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-muted text-lg max-w-2xl mx-auto"
+          >
+            I'm always interested in new opportunities and collaborations. Feel
+            free to reach out!
+          </motion.p>
         </div>
 
         {/* Main Content Grid */}
@@ -178,12 +194,12 @@ export default function ContactMe() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-2 order-1 lg:order-2 space-y-6"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-200 mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
               Contact <span className="text-orange-400">Information</span>
             </h3>
 
             {/* Profile Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#23232a] to-[#1a1a20] border border-orange-500/10 mb-6">
+            <div className="p-6 rounded-2xl bg-card border border-black/5 dark:border-orange-500/10 mb-6">
               <div className="flex items-center gap-4 mb-6">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-orange-500/50">
                   <Image
@@ -194,7 +210,7 @@ export default function ContactMe() {
                   />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-200">
+                  <h4 className="text-xl font-bold text-foreground">
                     Sajid Hameed
                   </h4>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mt-2">
@@ -210,21 +226,21 @@ export default function ContactMe() {
               <div className="flex gap-3">
                 <SocialButton
                   icon={Linkedin}
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/sajid-hameed-9616a7266/"
                   label="LinkedIn"
                 />
                 <SocialButton
                   icon={Github}
-                  href="https://github.com"
+                  href="https://github.com/SajidHameed223"
                   label="GitHub"
                 />
                 <SocialButton
                   icon={Mail}
-                  href="mailto:sajid@example.com"
+                  href="mailto:hameedsajid027@gmail.com"
                   label="Email"
                 />
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed py-2">
+              <p className="text-muted text-sm leading-relaxed py-2">
                 My inbox is always open. Whether you have a project or just want
                 to say hi, I'll try my best to get back to you!
               </p>
@@ -235,16 +251,16 @@ export default function ContactMe() {
               <ContactCard
                 icon={Phone}
                 title="Phone"
-                value="(+91) 8910171611"
-                href="tel:+918910171611"
+                value="(+92) 309 7301 377"
+                href="tel:+923097301377"
               />
               <ContactCard
                 icon={Mail}
                 title="Email"
-                value="dipakmourya1508@gmail.com"
-                href="mailto:dipakmourya1508@gmail.com"
+                value="hameedsajid027@gmail.com"
+                href="mailto:hameedsajid027@gmail.com"
               />
-              <ContactCard icon={MapPin} title="Location" value="India" />
+              <ContactCard icon={MapPin} title="Location" value="Pakistan" />
             </div>
           </motion.div>
 
@@ -257,19 +273,19 @@ export default function ContactMe() {
             className="lg:col-span-3 order-2 lg:order-1"
           >
             {/* Outer Glow Container */}
-            <div className="relative p-8 rounded-3xl bg-[#1a1a20] shadow-[0_0_30px_rgba(255,140,0,0.5)]">
+            <div className="relative p-8 rounded-3xl bg-background shadow-[0_0_30px_rgba(255,140,0,0.5)]">
               {/* Inner Form Card */}
-              <div className="p-8 md:p-10 rounded-3xl bg-[#23232a] border border-orange-500/10">
+              <div className="p-8 md:p-10 rounded-3xl bg-card border border-black/5 dark:border-orange-500/10 shadow-[0_0_20px_rgba(255,140,0,1)]">
                 {/* Form Header */}
                 <div className="mb-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-200 mb-2">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                     Let's <span className="text-orange-400">Work Together</span>
                   </h3>
 
                   {/* Scrolling Text */}
                   <div className="relative w-full overflow-hidden h-8 mb-6">
-                    <div className="flex w-max animate-form-marquee whitespace-nowrap text-gray-400 text-lg">
-                      Hi, I'm Dipak Mourya! Fill out the form below to
+                    <div className="flex w-max animate-form-marquee whitespace-nowrap text-muted text-lg">
+                      Hi, I'm Sajid Hameed! Fill out the form below to
                       collaborate on web development, UI/UX design, or
                       consultancy. Let's create something amazing together!
                     </div>
@@ -281,7 +297,7 @@ export default function ContactMe() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <InputField
                       label="First Name"
-                      placeholder="John"
+                      placeholder="Sajid"
                       value={formData.firstName}
                       onChange={(value) =>
                         setFormData({ ...formData, firstName: value })
@@ -290,7 +306,7 @@ export default function ContactMe() {
                     />
                     <InputField
                       label="Last Name"
-                      placeholder="Doe"
+                      placeholder="Hameed"
                       value={formData.lastName}
                       onChange={(value) =>
                         setFormData({ ...formData, lastName: value })
@@ -303,7 +319,7 @@ export default function ContactMe() {
                     <InputField
                       label="Email Address"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="sajid@example.com"
                       value={formData.email}
                       onChange={(value) =>
                         setFormData({ ...formData, email: value })
@@ -313,7 +329,7 @@ export default function ContactMe() {
                     <InputField
                       label="Phone Number"
                       type="tel"
-                      placeholder="+91 8910171611"
+                      placeholder="+92 312 3456 789"
                       value={formData.phone}
                       onChange={(value) =>
                         setFormData({ ...formData, phone: value })

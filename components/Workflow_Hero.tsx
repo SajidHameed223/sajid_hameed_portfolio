@@ -60,7 +60,7 @@ const ProcessCard = ({ step, index }: { step: ProcessStep; index: number }) => {
       className="relative flex flex-col "
     >
       {/* Card Content */}
-      <div className="group relative flex flex-col p-8 bg-[#1C1C22] border border-orange-500/30 rounded-3xl hover:border-orange-500 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(249,115,22,0.25)] h-full">
+      <div className="group relative flex flex-col p-8 bg-card border border-black/5 dark:border-orange-500/30 rounded-3xl hover:border-orange-500 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(249,115,22,0.25)] h-full">
         {/* Header with Icon and Number */}
         <div className="flex items-start justify-between mb-6">
           {/* Icon Container */}
@@ -69,16 +69,16 @@ const ProcessCard = ({ step, index }: { step: ProcessStep; index: number }) => {
           </div>
 
           {/* Step Number */}
-          <span className="text-5xl font-bold text-[#343438] select-none">
+          <span className="text-5xl font-bold text-muted/20 select-none">
             {step.number}
           </span>
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-bold text-gray-300 mb-4 group-hover:text-orange-400 transition-colors leading-tight">
+        <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-orange-400 transition-colors leading-tight">
           {step.title}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed">
+        <p className="text-muted text-sm leading-relaxed">
           {step.description}
         </p>
 
@@ -89,7 +89,7 @@ const ProcessCard = ({ step, index }: { step: ProcessStep; index: number }) => {
       {/* Connecting Line (except for last item) */}
       {index < processSteps.length - 1 && (
         <div className="hidden lg:block absolute top-1/8 -right-8 w-8 -translate-y-1/2">
-          <div className="border-t-2 border-dashed border-zinc-700/60 w-full" />
+          <div className="border-t-2 border-dashed border-black/10 dark:border-zinc-700/60 w-full" />
         </div>
       )}
     </motion.div>
@@ -98,7 +98,7 @@ const ProcessCard = ({ step, index }: { step: ProcessStep; index: number }) => {
 
 export default function HowIWork() {
   return (
-    <div className="min-h-screen bg-[#1C1C22] text-gray-400 font-sans selection:bg-orange-500/30 py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background text-muted font-sans selection:bg-orange-500/30 py-10 px-6 md:px-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-start mb-16">
@@ -117,7 +117,7 @@ export default function HowIWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-foreground"
           >
             How I{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
@@ -129,7 +129,7 @@ export default function HowIWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-400"
+            className="text-muted"
           >
             A proven, structured approach that ensures every project delivers
             maximum value.
@@ -146,3 +146,4 @@ export default function HowIWork() {
     </div>
   );
 }
+

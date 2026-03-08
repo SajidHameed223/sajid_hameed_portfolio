@@ -1,6 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
   User,
@@ -23,8 +25,10 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("Home");
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const isActive = (href: string) => pathname === href;
 
   return (
     <>
@@ -47,14 +51,19 @@ export default function Navbar() {
             {NAV_LINKS.map(({ label, href }) => (
               <Link key={label} href={href}>
                 <button
-                  key={label}
-                  onClick={() => setActive(label)}
-                  className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${active === label
-                    ? "bg-gradient-to-l from-orange-500 to-yellow-400 text-white shadow-[0_0_15px_rgba(250,204,21,0.7)]"
-                    : "text-gray-600 dark:text-gray-300 hover:text-orange-400 hover:bg-black/5 dark:hover:bg-white/10"
+                  className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${isActive(href)
+                    ? "text-white"
+                    : "text-muted hover:text-foreground"
                     }`}
                 >
-                  {label}
+                  {isActive(href) && (
+                    <motion.div
+                      layoutId="navbarActiveTab"
+                      className="absolute inset-0 bg-primary-gradient rounded-full shadow-[0_0_15px_rgba(251,146,60,0.4)]"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{label}</span>
                 </button>
               </Link>
             ))}
@@ -103,34 +112,39 @@ export default function Navbar() {
 
           {/* Links */}
           <div className="flex flex-col gap-2 flex-1">
-            {NAV_LINKS.map(({ label, icon: Icon }) => (
-              <button
-                key={label}
-                onClick={() => {
-                  setActive(label);
-                  setMenuOpen(false);
-                }}
-                className={`flex items-center gap-4 px-3 py-3 rounded-xl font-semibold text-base transition-all duration-200 w-full ${active === label
-                  ? "bg-gradient-to-l from-orange-500 to-yellow-400 text-white shadow-[0_0_20px_rgba(250,204,21,0.5)]"
-                  : "text-muted hover:bg-black/5 dark:hover:bg-white/5"
-                  }`}
-              >
-                <Icon className="w-5 h-5 flex-shrink-0" />
-                <span>{label}</span>
-                {active === label && (
-                  <span className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse" />
-                )}
-              </button>
+            {NAV_LINKS.map(({ label, href, icon: Icon }) => (
+              <Link key={label} href={href} onClick={() => setMenuOpen(false)}>
+                <div
+                  className={`relative flex items-center gap-4 px-3 py-3 rounded-xl font-semibold text-base transition-all duration-300 w-full overflow-hidden ${isActive(href)
+                    ? "text-white"
+                    : "text-muted hover:bg-black/5 dark:hover:bg-white/5"
+                    }`}
+                >
+                  {isActive(href) && (
+                    <motion.div
+                      layoutId="mobileNavbarActiveTab"
+                      className="absolute inset-0 bg-primary-gradient shadow-[0_0_20px_rgba(251,146,60,0.3)]"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <Icon className="relative z-10 w-5 h-5 flex-shrink-0" />
+                  <span className="relative z-10">{label}</span>
+                  {isActive(href) && (
+                    <span className="relative z-10 ml-auto w-2 h-2 bg-white rounded-full animate-pulse" />
+                  )}
+                </div>
+              </Link>
             ))}
 
             {/* Hire Me */}
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-4 px-5 py-3 rounded-xl font-semibold text-base text-muted hover:bg-black/5 dark:hover:bg-white/5 transition-all w-full"
-            >
-              <Briefcase className="w-5 h-5 flex-shrink-0" />
-              <span>Hire Me</span>
-            </button>
+            <Link href="/contact" onClick={() => setMenuOpen(false)}>
+              <div
+                className="flex items-center gap-4 px-5 py-3 rounded-xl font-semibold text-base text-muted hover:bg-black/5 dark:hover:bg-white/5 transition-all w-full"
+              >
+                <Briefcase className="w-5 h-5 flex-shrink-0" />
+                <span>Hire Me</span>
+              </div>
+            </Link>
           </div>
           <div className="w-full h-[4px] bg-gradient-to-l from-transparent via-orange-500 to-transparent" />
         </div>

@@ -18,7 +18,7 @@ const faqData: FAQItem[] = [
     id: "1",
     question: "What is your current role?",
     answer:
-      "I am currently working as a Software Engineer (M1 - Full Stack) while also pursuing an MBA in Business Analytics. I am open to freelance projects and full-time opportunities.",
+      "I am currently working as a Nextjs Developer (Full Stack). I am open to freelance projects and full-time opportunities.",
   },
   {
     id: "2",
@@ -30,7 +30,7 @@ const faqData: FAQItem[] = [
     id: "3",
     question: "How long will the work take from start to finish?",
     answer:
-      "Timelines vary based on project scope. A simple landing page might take 1-2 weeks, while a complex SaaS application could take 2-3 months. I follow an agile methodology to deliver incremental updates and ensure transparency throughout the process.",
+      "Timelines vary based on project scope. A simple landing page might take 1-2 days, while a complex SaaS application could take 2-3 months. I follow an agile methodology to deliver incremental updates and ensure transparency throughout the process.",
   },
   {
     id: "4",

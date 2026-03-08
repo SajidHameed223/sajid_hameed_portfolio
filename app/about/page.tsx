@@ -62,25 +62,25 @@ const educationData: EducationItem[] = [
 const experienceData: ExperienceItem[] = [
   {
     id: "1",
-    year: "2023 - Present",
-    role: "Software Engineer (M1)",
-    company: "Tech Solutions Inc.",
+    year: "2026 - Present",
+    role: "Nextjs Developer (Full Stack)",
+    company: "Axon ERP",
     description:
-      "Leading full-stack development with React, Node.js, and cloud technologies.",
+      "Developing ERP Modules | full-stack development with Next.js and PostgreSQL.",
   },
   {
     id: "2",
-    year: "2022 - 2023",
-    role: "Full Stack Developer",
-    company: "Digital Innovations",
+    year: "2025",
+    role: "Machine Learning Intern",
+    company: "Code Celix",
     description:
-      "Built scalable web applications and mentored junior developers.",
+      "Build Gen AI Projects and natural language processing tasks.",
   },
   {
     id: "3",
-    year: "2021 - 2022",
-    role: "Frontend Developer Intern",
-    company: "StartUp Hub",
+    year: "2023",
+    role: "Web Developer Intern",
+    company: "Web Squad",
     description:
       "Developed responsive UI components and optimized performance.",
   },
@@ -95,18 +95,18 @@ const skillsData: SkillItem[] = [
   { id: "6", name: "Next.js", icon: "/next.svg" },
   { id: "7", name: "Tailwind", icon: "/tailwind.svg" },
   { id: "8", name: "Bootstrap", icon: "/bootstrap.svg" },
-  { id: "9", name: "Python", icon: "/python.svg" },
   { id: "10", name: "Node.js", icon: "/node.png" },
   { id: "11", name: "Express", icon: "/express.png" },
   { id: "12", name: "MongoDB", icon: "/mongo.svg" },
   { id: "13", name: "PostgreSQL", icon: "/postgre.svg" },
   { id: "14", name: "MySQL", icon: "/sql.svg" },
+  { id: "9", name: "Python", icon: "/python.svg" },
   { id: "15", name: "Git", icon: "/git.svg" },
   { id: "16", name: "GitHub", icon: "/githun.png" },
   { id: "17", name: "Docker", icon: "/docker.png" },
   { id: "18", name: "Firebase", icon: "/firebase.png" },
   { id: "19", name: "Material UI", icon: "/mui.jpg" },
-  { id: "20", name: "Vercel", icon: "/vercel.svg" },
+  { id: "20", name: "Vercel", icon: "/vercel.png" },
   { id: "21", name: "Netlify", icon: "/netlify.svg" },
   { id: "22", name: "Socket.io", icon: "/socket.svg" },
 ];
@@ -342,7 +342,7 @@ export default function PersonalOverview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted text-lg max-w-2xl mx-auto"
+            className="text-muted text-lg max-w-3xl mx-auto"
           >
             Discover my journey, skills, and passion for creating innovative
             digital solutions
@@ -387,8 +387,8 @@ export default function PersonalOverview() {
               </div>
 
               <p className="text-muted mb-8 w-auto">
-                I am a Software Developer with a B.Tech in Computer Science &
-                Engineering and currently pursuing an MBA in Business Analytics.
+                I am a Software Developer with a BS in Software
+                Engineering.
                 I blend technical skills with a passion for learning and
                 strategic insights. Below are my education details:
               </p>
@@ -419,7 +419,7 @@ export default function PersonalOverview() {
               </div>
 
               <p className="text-muted mb-8 w-auto">
-                Over 3+ years of professional experience in software
+                Over 1+ year of professional experience in software
                 development, working with startups and established companies to
                 deliver high-quality solutions.
               </p>
@@ -451,7 +451,7 @@ export default function PersonalOverview() {
 
               <p className="text-muted mb-8 w-auto">
                 A diverse set of technical skills spanning frontend, backend,
-                databases, and analytics. Continuously learning and adapting to
+                databases, Machine Learning and Gen AI. Continuously learning and adapting to
                 new technologies.
               </p>
 

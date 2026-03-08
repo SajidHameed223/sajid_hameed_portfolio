@@ -6,26 +6,26 @@ const TIMELINE = [
   {
     year: "2026",
     month: "January",
-    title: "Software Engineer — Inwork Global",
-    desc: "Joined Inwork Global as Software Engineer M1. Leading frontend development with React.js and Next.js while also working on backend systems with Socket.io and scalable cloud deployments.",
+    title: "Next.js Developer - Axon ERP",
+    desc: "Joined Axon ERP as a Next.js Developer, contributing to the development of ERP Software.",
   },
   {
     year: "2025",
-    month: "August",
-    title: "Promoted to Software Engineer (M1)",
-    desc: "Led frontend development for Resource Planning system and coordinated multiple feature deliveries.",
+    month: "December",
+    title: "Participated in International Coding Competitions",
+    desc: "I have participated in several international coding competitions, including UC Berkely Calico Competition , M{it}² Winter Contest, Meta Hacker Cup, Advent of Code.",
   },
   {
-    year: "2024",
-    month: "March",
-    title: "Junior Frontend Developer",
-    desc: "Built responsive web applications with React.js and Tailwind CSS in collaboration with backend and design teams.",
+    year: "2025",
+    month: "September",
+    title: "Participated and won in Hackathons",
+    desc: "Participated in 7+ international Hackathons at lablab.ai and Devpost. Secured 2nd place in  Solaris Hackathon at Devpost.",
   },
   {
     year: "2023",
     month: "June",
-    title: "Freelance Web Developer",
-    desc: "Delivered custom web apps using Next.js, TypeScript and REST APIs for multiple clients.",
+    title: "Web Development Intern",
+    desc: "Delivered custom web apps using Html , Css and Javascript.",
   },
 ];
 
@@ -68,12 +68,12 @@ export default function TimelineModal() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-2xl max-h-[80vh] bg-[#1e1e24] border border-white/10 rounded-2xl shadow-[0_0_60px_rgba(251,146,60,0.2)] flex flex-col overflow-hidden animate-scaleIn"
+            className="w-full max-w-2xl max-h-[80vh] bg-card border border-white/10 rounded-2xl shadow-[0_0_60px_rgba(251,146,60,0.2)] flex flex-col overflow-hidden animate-scaleIn"
           >
             {/* Header */}
             <div className="px-8 pt-8 pb-6 border-b border-white/10 flex justify-between items-start">
               <div>
-                <h2 className="text-2xl font-bold text-white font-mono mb-2">
+                <h2 className="text-2xl font-bold text-foreground font-mono mb-2">
                   Professional Timeline
                 </h2>
                 <p className="text-gray-400 text-sm font-mono">
@@ -83,7 +83,7 @@ export default function TimelineModal() {
 
               <button
                 onClick={() => setOpen(false)}
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-orange-500/20 hover:border-orange-400/40 transition-all"
+                className="w-9 h-9 rounded-full bg-gray-900/5 dark:bg-white/10 border border-card/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-orange-500/20 hover:border-orange-400/40 hover:shadow-[0_0_15px_rgba(251,146,60,0.3)] cursor-pointer transition-all"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -115,7 +115,7 @@ export default function TimelineModal() {
                         <p className="text-gray-500 text-xs font-mono mb-1">
                           {item.month}
                         </p>
-                        <h3 className="text-white font-bold text-base font-mono mb-2">
+                        <h3 className="text-foreground font-bold text-base font-mono mb-2">
                           {item.title}
                         </h3>
                         <p className="text-gray-400 text-sm font-mono leading-relaxed">
@@ -128,7 +128,7 @@ export default function TimelineModal() {
               </div>
             </div>
 
-            <div className="h-8 bg-gradient-to-t from-[#1e1e24] to-transparent pointer-events-none" />
+            <div className="h-8 bg-gradient-to-t from-card to-transparent pointer-events-none" />
           </div>
 
           {/* Animations + Scrollbar */}

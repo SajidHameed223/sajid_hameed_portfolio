@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Subtitle */}
 
           <h4 className="font-heading text-lg md:text-xl text-muted mb-6">
-            Solving problems, building web solutions, and bringing ideas to
+            Solving problems, building solutions, and bringing ideas to
             life.
           </h4>
 
@@ -82,7 +82,7 @@ export default function Hero() {
 
           <p className="text-muted text-base md:text-lg leading-relaxed mb-8">
             I am <strong className="text-foreground">Sajid Hameed</strong> a Software
-            Engineer who combines web development skills with creative problem
+            Engineer who combines development skills with creative problem
             solving to deliver scalable and elegant solutions.
           </p>
 

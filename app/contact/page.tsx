@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Loader from "@/components/Loader";
+import { toast } from "sonner";
 
 const InputField = ({
   label,
@@ -136,13 +137,63 @@ export default function ContactMe() {
     message: "",
   });
   const [loading, setLoading] = useState(true);
+  const [result, setResult] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000); // show loader for 1s
     return () => clearTimeout(timer);
   }, []);
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setSubmitting(true);
+    setResult("Sending...");
+
+    const promise = new Promise(async (resolve, reject) => {
+      try {
+        const data = new FormData();
+
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+        if (!accessKey || accessKey === "your_access_key_here") {
+          throw new Error("API Key is missing. Please check your .env.local file.");
+        }
+
+        data.append("access_key", accessKey);
+        data.append("firstName", formData.firstName);
+        data.append("lastName", formData.lastName);
+        data.append("email", formData.email);
+        data.append("phone", formData.phone);
+        data.append("message", formData.message);
+        data.append("subject", `New Contact from ${formData.firstName} ${formData.lastName}`);
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: data,
+        });
+
+        const res = await response.json();
+
+        if (res.success) {
+          handleReset();
+          setResult("Message sent successfully!");
+          resolve(res);
+        } else {
+          setResult("Something went wrong. Please try again.");
+          reject(new Error(res.message || "Failed to send message"));
+        }
+      } catch (error) {
+        setResult("Network error. Please try again.");
+        reject(error);
+      } finally {
+        setSubmitting(false);
+      }
+    });
+
+    toast.promise(promise, {
+      loading: "Sending your message...",
+      success: "Message sent successfully! I'll get back to you soon.",
+      error: (err) => err.message || "Something went wrong. Please try again.",
+    });
   };
 
   const handleReset = () => {
@@ -155,7 +206,7 @@ export default function ContactMe() {
     });
   };
   if (loading) {
-    return <Loader />
+    return <Loader />;
   }
   return (
     <div className="min-h-screen bg-background text-muted font-sans selection:bg-orange-500/30 py-20 px-6 md:px-20 mt-8 transition-colors duration-300">
@@ -177,7 +228,7 @@ export default function ContactMe() {
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-muted text-lg max-w-2xl mx-auto"
+            className="text-muted text-lg max-w-3xl mx-auto"
           >
             I'm always interested in new opportunities and collaborations. Feel
             free to reach out!
@@ -351,9 +402,10 @@ export default function ContactMe() {
                   <div className="flex flex-wrap gap-4 pt-4">
                     <button
                       type="submit"
-                      className="group flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 transition-all duration-300"
+                      disabled={submitting}
+                      className="group flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Send
+                      {submitting ? "Sending..." : "Send"}
                       <Send
                         size={18}
                         className="group-hover:translate-x-1 transition-transform"

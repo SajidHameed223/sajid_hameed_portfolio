@@ -10,6 +10,8 @@ import {
   Layers,
   Shield,
   ArrowUpRight,
+  Brain,
+  Sparkles,
 } from "lucide-react";
 import Loader from "@/components/Loader";
 
@@ -28,54 +30,54 @@ const services: ServiceItem[] = [
   {
     id: "1",
     number: "01",
-    title: "Web Application Architecture",
+    title: "Full-Stack Web Development",
     description:
-      "Building scalable and maintainable web application architectures with focus on performance, security, and modularity using best practices.",
+      "Building scalable, production-ready web applications from frontend to backend with clean architecture, secure APIs, and optimized performance.",
     icon: Globe,
     gradient: "from-blue-500 to-cyan-400",
   },
   {
     id: "2",
     number: "02",
-    title: "Frontend Development",
+    title: "Frontend Engineering",
     description:
-      "Creating responsive, high-performance web applications using modern frameworks like React and Vue.js for seamless user experiences.",
+      "Developing responsive, interactive, and high-performance user interfaces using modern frameworks like React and Next.js with a strong focus on UX and accessibility.",
     icon: Code2,
     gradient: "from-purple-500 to-pink-400",
   },
   {
     id: "3",
     number: "03",
-    title: "Backend Development",
+    title: "Backend & API Development",
     description:
-      "Building robust backends with Node.js, API design, database management, and secure server operations for scalable applications.",
+      "Designing secure, scalable backend systems with REST/GraphQL APIs, database optimization, authentication, and efficient server-side logic.",
     icon: Server,
     gradient: "from-green-500 to-emerald-400",
   },
   {
     id: "4",
     number: "04",
-    title: "UI/UX Design",
+    title: "Machine Learning Solutions",
     description:
-      "Designing intuitive, user-centered interfaces that focus on aesthetics, functionality, and creating exceptional user experiences.",
-    icon: Palette,
+      "Building intelligent systems using machine learning for prediction, classification, recommendation, and data-driven decision-making.",
+    icon: Brain,
     gradient: "from-orange-500 to-amber-400",
   },
   {
     id: "5",
     number: "05",
-    title: "Custom Component Development",
+    title: "Generative AI Applications",
     description:
-      "Developing reusable, scalable UI components aligned with your brand's design system for consistent user experiences.",
-    icon: Layers,
+      "Creating AI-powered applications using LLMs and generative models for chatbots, content generation, automation, and intelligent workflows.",
+    icon: Sparkles,
     gradient: "from-violet-500 to-purple-400",
   },
   {
     id: "6",
     number: "06",
-    title: "Server & Deployment Management",
+    title: "Deployment & Cloud Integration",
     description:
-      "I manage infrastructure, deployments, domain configuration, and SSL setup. I have hands-on experience with AWS (S3, EC2), Azure cloud services, and automated CI/CD pipelines for seamless deployment.",
+      "Managing deployments, cloud hosting, CI/CD pipelines, domain configuration, and scalable infrastructure for reliable production environments.",
     icon: Shield,
     gradient: "from-teal-500 to-cyan-400",
   },

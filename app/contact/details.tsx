@@ -156,8 +156,8 @@ export default function ContactMe() {
     const promise = new Promise(async (resolve, reject) => {
       try {
         const data = new FormData();
-        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-        if (!accessKey || accessKey === "your_access_key_here")
+        const accessKey = "f0ff10b2-4214-41e7-9b0e-1c0286b091d7";
+        if (!accessKey)
           throw new Error("API Key is missing.");
 
         data.append("access_key", accessKey);

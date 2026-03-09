@@ -59,7 +59,7 @@ export default function Navbar() {
                   {isActive(href) && (
                     <motion.div
                       layoutId="navbarActiveTab"
-                      className="absolute inset-0 bg-primary-gradient rounded-full shadow-[0_0_15px_rgba(251,146,60,0.4)]"
+                      className="absolute inset-0 bg-primary rounded-full shadow-[0_0_15px_rgba(251,146,60,0.4)]"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -123,7 +123,7 @@ export default function Navbar() {
                   {isActive(href) && (
                     <motion.div
                       layoutId="mobileNavbarActiveTab"
-                      className="absolute inset-0 bg-primary-gradient shadow-[0_0_20px_rgba(251,146,60,0.3)]"
+                      className="absolute inset-0 bg-primary shadow-[0_0_20px_rgba(251,146,60,0.3)]"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}

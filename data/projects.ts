@@ -46,7 +46,7 @@ export const projects: Project[] = [
       "Multi-module ERP architecture",
       "Sales, Purchase & Inventory management",
       "Accounts & financial reporting",
-      "WhatsApp notification integration",
+      "WhatsApp Messaging integration",
       "Role-based access control",
       "Workflow automation",
       "Business analytics dashboard",
@@ -54,6 +54,7 @@ export const projects: Project[] = [
     ],
     duration: "Ongoing",
     completedDate: "ongoing",
+    liveUrl:"https://www.axonerp.com"
   },
 
   {
@@ -91,8 +92,8 @@ export const projects: Project[] = [
       "Privacy-first encrypted architecture",
     ],
     duration: "4 months",
-    completedDate: "2025",
-    githubUrl: "https://lnkd.in/dbVKQJ39",
+    completedDate: "2026",
+    githubUrl: "https://github.com/Hassaan202/SafeNet",
   },
 {
     id: "3",
@@ -121,7 +122,8 @@ export const projects: Project[] = [
     ],
     duration: "Ongoing",
     completedDate: "2026",
-    liveUrl: "https://your-portfolio-link.com",
+    githubUrl:"https://github.com/SajidHameed223/sajid_hameed_portfolio",
+    liveUrl: "/",
   },
   {
     id: "4",
@@ -155,6 +157,7 @@ export const projects: Project[] = [
     ],
     duration: "Hackathon Project",
     completedDate: "2025",
+    githubUrl:"https://github.com/SajidHameed223/Hackathon_/"
   },
 
   {
@@ -184,6 +187,8 @@ export const projects: Project[] = [
     ],
     duration: "Hackathon Project",
     completedDate: "2025",
+    githubUrl:"https://github.com/CringeKid102/moonbase_er",
+    liveUrl:"https://devpost.com/software/moonbase-alpha"
   },
   {
     id: "6",
@@ -221,6 +226,8 @@ export const projects: Project[] = [
     ],
     duration: "Hackathon Project",
     completedDate: "2025",
+    githubUrl:"https://github.com/SajidHameed223/Hackathon-Project-Wellness-Champion-",
+    liveUrl:"https://devpost.com/software/wellness-champion",
   },
 
 ];

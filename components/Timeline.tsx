@@ -93,32 +93,32 @@ export default function TimelineModal() {
             <div className="flex-1 overflow-y-auto px-8 py-6 custom-scroll">
               <div className="relative">
                 {/* Center Line */}
-                <div className="absolute left-20 top-0 bottom-0 w-[3px] bg-gradient-to-b from-orange-400 via-yellow-400 to-orange-400/20 rounded-full" />
+                <div className="absolute left-[86px] sm:left-[102px] top-0 bottom-0 w-[3px]  bg-gradient-to-b from-orange-400 via-yellow-400 to-orange-400/20 rounded-full" />
 
                 <div className="flex flex-col gap-10">
                   {TIMELINE.map((item, i) => (
                     <div key={i} className="relative flex gap-6">
                       {/* Year Column */}
-                      <div className="w-16 text-right">
-                        <span className="text-orange-400 font-bold text-xl font-mono">
+                      <div className="w-12 sm:w-16 text-right">
+                        <span className="text-orange-400 font-bold text-base sm:text-lg md:text-xl font-mono">
                           {item.year}
                         </span>
                       </div>
 
                       {/* Dot positioned exactly on the line */}
                       <div className="relative w-8 flex justify-center">
-                        <div className="absolute top-2 -left-[14px] w-4 h-4 rounded-full bg-orange-400 border-4 border-white shadow-[0_0_15px_rgba(251,146,60,0.9)]" />
+                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-orange-400 border-4 border-white shadow-[0_0_15px_rgba(251,146,60,0.9)]" />
                       </div>
 
                       {/* Content */}
                       <div className="flex-1 pb-2">
-                        <p className="text-gray-500 text-xs font-mono mb-1">
+                        <p className="text-gray-500 text-xs sm:text-sm font-mono mb-1">
                           {item.month}
                         </p>
-                        <h3 className="text-foreground font-bold text-base font-mono mb-2">
+                        <h3 className="text-foreground font-bold text-sm sm:text-base md:text-lg font-mono mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-gray-400 text-sm font-mono leading-relaxed">
+                        <p className="text-gray-400 text-xs sm:text-sm md:text-sm font-mono leading-relaxed">
                           {item.desc}
                         </p>
                       </div>

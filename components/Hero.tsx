@@ -46,8 +46,8 @@ export default function Hero() {
 
       {/* Glow */}
 
-      <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[100px]" />
-      <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-yellow-500/10 rounded-full blur-[100px]" />
+      <div className="absolute -top-20 -left-20 w-100 h-100 bg-orange-500/10 rounded-full blur-[100px]" />
+      <div className="absolute -bottom-20 -right-20 w-100 h-100 bg-yellow-500/10 rounded-full blur-[100px]" />
 
       <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between w-full gap-12">
         {/* Left Content */}
@@ -57,7 +57,7 @@ export default function Hero() {
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-orange-500/40 bg-orange-500/10 mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-            <span className="font-heading text-orange-300 text-xs tracking-wider">
+            <span className="font-heading text-orange-500 text-xs tracking-wider">
               Available for Freelance and Full-time
             </span>
           </div>
@@ -74,16 +74,15 @@ export default function Hero() {
           {/* Subtitle */}
 
           <h4 className="font-heading text-lg md:text-xl text-muted mb-6">
-            Solving problems, building solutions, and bringing ideas to
-            life.
+            Solving problems, building solutions, and bringing ideas to life.
           </h4>
 
           {/* Description */}
 
           <p className="text-muted text-base md:text-lg leading-relaxed mb-8">
-            I am <strong className="text-foreground">Sajid Hameed</strong> a Software
-            Engineer who combines development skills with creative problem
-            solving to deliver scalable and elegant solutions.
+            I am <strong className="text-foreground">Sajid Hameed</strong> a
+            Software Engineer who combines development skills with creative
+            problem solving to deliver scalable and elegant solutions.
           </p>
 
           {/* Buttons */}
@@ -122,23 +121,55 @@ export default function Hero() {
         </div>
 
         {/* Profile Image */}
-
         <div className="relative flex-shrink-0 flex items-center justify-center mt-10 md:mt-0">
-          <div className="absolute w-[300px] h-[300px] md:w-[360px] md:h-[360px] rounded-full bg-gradient-to-br from-orange-500/30 to-yellow-400/20 blur-[40px]" />
+          {/* Glow blur */}
+          <div className="absolute w-75 h-75 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-orange-500/30 to-yellow-400/20 blur-[40px]" />
 
-          <div
-            className="absolute w-[350px] h-[350px] md:w-[410px] md:h-[410px] rounded-full border border-dashed border-orange-400/40"
-            style={{ animation: "spinSlow 20s linear infinite" }}
-          />
+          {/* Each SVG = one dash, unique length + speed + direction */}
+          {[
+            { length: 10, offset: 0, duration: "58s", reverse: false },
+            { length: 20, offset: -180, duration: "55s", reverse: true },
+            { length: 8, offset: -420, duration: "14s", reverse: false },
+            { length: 30, offset: -600, duration: "30s", reverse: true },
+            { length: 14, offset: -850, duration: "20s", reverse: false },
+            { length: 25, offset: -1050, duration: "39s", reverse: true },
+            { length: 10, offset: -1300, duration: "22s", reverse: false },
+            { length: 48, offset: -1050, duration: "49s", reverse: true },
+            { length: 35, offset: -1300, duration: "42s", reverse: false },
+          ].map((dash, i) => (
+            <svg
+              key={i}
+              // ✅ bigger on mobile — matches image size + padding
+              className="absolute w-[330px] h-[330px] md:w-[430px] md:h-[430px]"
+              fill="transparent"
+              viewBox="0 0 506 506"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                animation: `spinSlow ${dash.duration} linear infinite ${dash.reverse ? "reverse" : ""}`,
+              }}
+            >
+              <defs>
+                <linearGradient id={`g${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#f97316" />
+                  <stop offset="100%" stopColor="#fbbf24" />
+                </linearGradient>
+              </defs>
+              <circle
+                cx="253"
+                cy="253"
+                r="244"
+                stroke={`url(#g${i})`}
+                // ✅ thicker stroke so dashes are visible on smaller screens
+                strokeWidth="8"
+                strokeLinecap="round"
+                strokeDasharray={`${dash.length} ${1532 - dash.length}`}
+                strokeDashoffset={dash.offset}
+              />
+            </svg>
+          ))}
 
-          <div
-            className="absolute w-[325px] h-[325px] md:w-[385px] md:h-[385px] rounded-full border border-dashed border-yellow-400/30"
-            style={{ animation: "spinSlow 14s linear infinite reverse" }}
-          />
-
-          <div className="absolute w-[305px] h-[305px] md:w-[355px] md:h-[355px] rounded-full border border-orange-400/20 shadow-[0_0_40px_rgba(251,146,60,0.25)]" />
-
-          <div className="relative w-[300px] h-[300px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-2 border-orange-400/50 shadow-[0_0_50px_rgba(251,146,60,0.4),0_0_80px_rgba(234,179,8,0.15)]">
+          {/* Profile image */}
+          <div className="relative w-75 h-75 md:w-100 md:h-100 rounded-full overflow-hidden">
             <Image
               src="/profile_image.png"
               alt="Sajid Hameed"
@@ -160,4 +191,3 @@ export default function Hero() {
     </section>
   );
 }
-

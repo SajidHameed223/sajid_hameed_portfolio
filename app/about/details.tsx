@@ -280,7 +280,7 @@ const ProfileCard = () => {
             </div> */}
           </div>
 
-          <p className="text-gray-300 leading-relaxed">{profileData.bio}</p>
+          <p className="text-muted leading-relaxed">{profileData.bio}</p>
 
           <div className="mt-6 pt-6 border-t border-black/5 dark:border-orange-500/10 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>

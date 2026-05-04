@@ -73,6 +73,6 @@ This project leverages the latest web technologies to deliver a seamless user ex
 
 This project is open-source and available under the [MIT License](LICENSE).
 
----
+-----
 
 Built with ❤️ by [Sajid Hameed](https://github.com/SajidHameed223)
